@@ -18,3 +18,12 @@ class Book:
     self.is_borrowed = False
     self.borrower = None
     return True
+
+
+  def to_dict(self) -> dict:
+    return {
+      "title": self.title,
+        "author": self.author,
+        "is_borrowed": self.is_borrowed,
+        "borrower_id": self.borrower.reader_id if self.borrower else None
+      }
