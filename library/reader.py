@@ -1,4 +1,4 @@
-from book import Book
+from .book import Book
 
 class Reader:
   MAX_BORROW_LIMIT = 3
@@ -8,7 +8,10 @@ class Reader:
     self.reader_id = reader_id
     self.borrowed_books:dict[str,Book] = {}
 
-  def can_borrow(self,book:Book):
+  def can_borrow(self,book:Book) ->bool:
+    return len(self.borrowed_books) < self.MAX_BORROW_LIMIT
+
+  def add_book(self,book:Book):
     self.borrowed_books[book.title] = book
 
   def remove_book(self,book_title:str):
